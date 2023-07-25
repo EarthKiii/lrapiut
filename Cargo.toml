@@ -1,0 +1,15 @@
+[package]
+name = "lrapiut"
+version = "0.1.0"
+edition = "2021"
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+]
+
+[dependencies]
+reqwest = { version = "0.11.16", features = ["cookies", "json"] }
+tokio = { version = "1", features = ["full"] }
+serde_json = "1.0"
+anyhow = "1.0"
+select = "0.6"
