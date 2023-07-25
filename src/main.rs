@@ -2,7 +2,6 @@ use reqwest::Client;
 use select::document::Document;
 use select::predicate::Name;
 use serde_json::Value;
-use anyhow::Context;
 
 const LOGIN_URL: &str = "https://authentification.univ-lr.fr/cas/login?service=https://notes.iut-larochelle.fr/services/doAuth.php?href=https://notes.iut-larochelle.fr/";
 
@@ -36,8 +35,7 @@ impl LRUser {
             .find(Name("input"))
             .filter(|n| n.attr("name").unwrap_or("") == "execution")
             .next()
-            .and_then(|n: select::node::Node<'_>| n.attr("value"))
-            .context("Valeur d'exécution introuvable").unwrap();
+            .and_then(|n: select::node::Node<'_>| n.attr("value")).unwrap();
     
         // Données du formulaire
         let form_data: [(&str, &str); 5] = [
