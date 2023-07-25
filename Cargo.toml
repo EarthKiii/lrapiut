@@ -6,6 +6,7 @@ author = "Jonas CHARRIER (EarthKiii)"
 repository = "https://github.com/EarthKiii/lrapiut/"
 homepage = "https://github.com/EarthKiii/lrapiut/"
 license = "MIT OR Apache-2.0"
+description = "a rust package api for L'IUT La Rochelle services"
 include = [
     "**/*.rs",
     "Cargo.toml",
