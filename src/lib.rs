@@ -147,5 +147,3 @@ impl LRUser {
     }
 
 }
-
-fn main() {}

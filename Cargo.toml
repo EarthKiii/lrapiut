@@ -1,16 +1,24 @@
 [package]
 name = "lrapiut"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
-author = "Jonas CHARRIER (EarthKiii)"
+authors = ["Jonas CHARRIER (EarthKiii) <jonas.charrier1@gmail.com>"]
 repository = "https://github.com/EarthKiii/lrapiut/"
 homepage = "https://github.com/EarthKiii/lrapiut/"
 license = "MIT OR Apache-2.0"
 description = "a rust package api for L'IUT La Rochelle services"
 include = [
-    "**/*.rs",
+    "src/lib.rs",
     "Cargo.toml",
 ]
+
+[lib]
+name = "lrapiut"
+path = "src/lib.rs"
+crate-type = ["dylib"]
+
+[profile.release]
+panic = "abort"
 
 [dependencies]
 reqwest = { version = "0.11.16", features = ["cookies", "json"] }
