@@ -1,5 +1,5 @@
 {
-  "name": "lrapiut-linux-arm64-gnu",
+  "name": "@earthkiii/lrapiut-linux-arm64-gnu",
   "version": "0.0.0",
   "os": [
     "linux"
@@ -15,6 +15,10 @@
   "engines": {
     "node": ">= 10"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/EarthKiii/lrapiut.git",
   "libc": [
     "glibc"
   ]

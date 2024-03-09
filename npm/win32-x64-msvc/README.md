@@ -1,3 +1,3 @@
-# `lrapiut-win32-x64-msvc`
+# `@earthkiii/lrapiut-win32-x64-msvc`
 
-This is the **x86_64-pc-windows-msvc** binary for `lrapiut`
+This is the **x86_64-pc-windows-msvc** binary for `@earthkiii/lrapiut`

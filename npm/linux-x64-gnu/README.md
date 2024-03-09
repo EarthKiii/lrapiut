@@ -1,3 +1,3 @@
-# `lrapiut-linux-x64-gnu`
+# `@earthkiii/lrapiut-linux-x64-gnu`
 
-This is the **x86_64-unknown-linux-gnu** binary for `lrapiut`
+This is the **x86_64-unknown-linux-gnu** binary for `@earthkiii/lrapiut`

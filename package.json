@@ -37,5 +37,6 @@
   "packageManager": "yarn@4.0.2",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": "https://github.com/EarthKiii/lrapiut.git"
 }
