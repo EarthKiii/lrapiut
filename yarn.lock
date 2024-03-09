@@ -5,6 +5,15 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
+"@earthkiii/lrapiut@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@earthkiii/lrapiut@workspace:."
+  dependencies:
+    "@napi-rs/cli": "npm:^2.18.0"
+    ava: "npm:^6.0.1"
+  languageName: unknown
+  linkType: soft
+
 "@mapbox/node-pre-gyp@npm:^1.0.5":
   version: 1.0.11
   resolution: "@mapbox/node-pre-gyp@npm:1.0.11"
@@ -882,15 +891,6 @@ __metadata:
   checksum: d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
   languageName: node
   linkType: hard
-
-"lrapiut@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "lrapiut@workspace:."
-  dependencies:
-    "@napi-rs/cli": "npm:^2.18.0"
-    ava: "npm:^6.0.1"
-  languageName: unknown
-  linkType: soft
 
 "lru-cache@npm:^6.0.0":
   version: 6.0.0
