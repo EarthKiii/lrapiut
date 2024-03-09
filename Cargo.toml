@@ -21,7 +21,6 @@ crate-type = ["cdylib"]
 [features]
 notes = []
 gpu = []
-js = []
 
 
 [dependencies]
@@ -33,7 +32,6 @@ async-trait = "0.1.73"
 napi = { version = "2.12.2", default-features = false, features = ["napi4", "serde-json", "tokio_rt"] }
 tokio = { version = "1.32.0", features = ["full"] }
 napi-derive = "2.12.2"
-napi_utils = { path = "../napi_utils/" }
 
 [build-dependencies]
 napi-build = "2.0.1"
