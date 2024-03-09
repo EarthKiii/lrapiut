@@ -248,7 +248,7 @@ mod tests {
 
     #[tokio::test] 
     async fn test_semestre() {
-        let res = LRUser::new("***REMOVED***".to_string(), "***REMOVED***".to_string());
+        let res = LRUser::new("username".to_string(), "password".to_string());
 
         let b = res.notes().semestre_etudiant().await;
         println!("Res of test: {}", b.unwrap_or(from_str("error").unwrap()));
