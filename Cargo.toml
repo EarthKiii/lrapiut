@@ -22,7 +22,7 @@ crate-type = ["cdylib"]
 notes = []
 gpu = []
 
-[target.'cfg(linux)'.dependencies]
+[target.'cfg(target_os = "linux")'.dependencies]
 openssl = { version = "0.10", features = ["vendored"] }
 
 [dependencies]
