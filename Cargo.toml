@@ -22,6 +22,8 @@ crate-type = ["cdylib"]
 notes = []
 gpu = []
 
+[target.'cfg(target_os = "linux")']
+openssl = { version = "0.10", features = ["vendored"] }
 
 [dependencies]
 reqwest = { version = "0.11.16", features = ["cookies", "json"] }
