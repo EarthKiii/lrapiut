@@ -47,4 +47,5 @@ panic = "abort"
 lrapiut = { path = ".", features = ["notes"] }
 
 [package.metadata.docs.rs]
-rustc-args = ["--all-features"]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
