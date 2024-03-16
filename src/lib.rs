@@ -6,7 +6,7 @@
 //! </div>
 
 #[cfg(feature = "notes")]
-pub mod notes;
+mod notes;
 
 use reqwest::{Client, ClientBuilder};
 use napi::bindgen_prelude::*;
@@ -18,7 +18,7 @@ use reqwest_cookie_store::CookieStoreMutex;
 use napi_derive::napi;
 use async_trait::async_trait;
 #[cfg(feature = "notes")]
-use crate::notes::NotesService;
+pub use crate::notes::NotesService;
 
 #[macro_export]
 /// Macro to expose an error to the javascript environment.
@@ -75,6 +75,7 @@ impl LRUser {
 
         let username_ref = Arc::new(Mutex::new(username));
         let password_ref = Arc::new(Mutex::new(password));
+        #[cfg(feature = "notes")]
         let notes_service = Arc::new(NotesService::_new(client_ref.clone(), username_ref.clone(), password_ref.clone()));
 
         Self {
@@ -144,8 +145,12 @@ impl LRUser {
     pub fn get_credentials(&self, env: Env) -> Result<Object> {
         return Runtime::new()?.block_on(self._get_credentials(env));
     }
+}
 
-    /// Gets the notes service, it is used to access notes's endpoints.
+#[cfg_attr(feature = "notes", napi)]
+#[cfg(feature = "notes")]
+impl LRUser {
+     /// Gets the notes service, it is used to access notes's endpoints.
     /// 
     /// <div class="warning">
     ///     This method does not need to be called with parenthesis in javascript as it is binded as a getter.
@@ -156,10 +161,9 @@ impl LRUser {
     /// use lrapiut::LRUser;
     ///
     /// let lrUser = LRUser::new("username".to_string(), "password".to_string());
-    /// let noteService = lrUser.notes();
+    /// let notesService = lrUser.notes();
     /// ```
     #[napi(getter)]
-    #[cfg(feature = "notes")]
     pub fn notes(&self) -> Arc<NotesService> {
         self._notes.clone()
     }
