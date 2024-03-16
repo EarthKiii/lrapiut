@@ -1,7 +1,12 @@
+//! # LRAPIUT
+//! This crate is a wrapper for the IUT La Rochelle's APIs.
+//! <div class="warning">
+//!     When using javascript bindings remember to replace the snake_case with camelCase.
+//!     i.e. `get_credentials` becomes `getCredentials`.
+//! </div>
+
+#[cfg(feature = "notes")]
 pub mod notes;
-pub mod gpu;
-
-
 
 use reqwest::{Client, ClientBuilder};
 use napi::bindgen_prelude::*;
@@ -13,15 +18,17 @@ use reqwest_cookie_store::CookieStoreMutex;
 use napi_derive::napi;
 use async_trait::async_trait;
 #[cfg(feature = "notes")]
-use crate::notes::notes::NotesService;
+use crate::notes::NotesService;
 
 #[macro_export]
+/// Macro to expose an error to the javascript environment.
 macro_rules! napi_error {
         ($emsg:tt) => {
            Err(napi::Error::new(napi::Status::GenericFailure, $emsg))
         };
 }
 
+/// Represents an IUT La Rochelle student.
 #[napi]
 pub struct LRUser {
     _client: Arc<Mutex<Client>>,
@@ -32,7 +39,9 @@ pub struct LRUser {
     _notes: Arc<NotesService>,
 }
 
+
 #[async_trait]
+#[doc(hidden)]
 pub trait CoreFunctions {
     async fn get_cookies(&self) -> Result<()>;
     async fn try_get(&self, url: &str) -> Result<Value>;
@@ -41,6 +50,19 @@ pub trait CoreFunctions {
 #[napi]
 impl LRUser {
     
+    /// Creates a new LRUser.
+    /// 
+    /// # Arguments
+    /// 
+    /// * `username` - The student's username.
+    /// * `password` - The student's password.
+    ///
+    /// # Examples
+    /// ```
+    /// use lrapiut::LRUser;
+    ///
+    /// let lrUser = LRUser::new("username".to_string(), "password".to_string());
+/// ```
     #[napi(constructor)]
     pub fn new(username: String, password: String) -> Self {
         let cookie_store = Arc::new(CookieStoreMutex::default());
@@ -72,6 +94,20 @@ impl LRUser {
         Ok(())
     }
 
+    /// Sets currents student's credentials.
+    /// 
+    /// # Arguments
+    /// 
+    /// * `username` - The new student's username.
+    /// * `password` - The new student's password.
+    ///
+    /// # Examples
+    /// ```
+    /// use lrapiut::LRUser;
+    ///
+    /// let lrUser = LRUser::new("username".to_string(), "password".to_string());
+    /// lrUser.set_credentials("new_username".to_string(), "new_password".to_string());
+    /// ```
     #[napi]
     pub fn set_credentials(&self, username: String, password: String) -> Result<()> {
         let _ = Runtime::new()?.block_on(self._set_credentials(username, password));
@@ -85,11 +121,43 @@ impl LRUser {
         Ok(obj)
     }
 
+    
+    /// Gets currents student's credentials.
+    /// 
+    /// <div class="warning">
+    ///     This method is meant to be used in javascript only.
+    /// </div>
+    /// 
+    /// # Examples
+    /// ```
+    /// use lrapiut::LRUser;
+    ///
+    /// let lrUser = LRUser::new("username".to_string(), "password".to_string());
+    /// lrUser.get_credentials(/* `env` is injected by NAPI-RS */);
+    /// ```
+    /// 
+    /// # Returns
+    /// ```
+    /// {"username": "username", "password": "password"}
+    /// ```
     #[napi]
     pub fn get_credentials(&self, env: Env) -> Result<Object> {
         return Runtime::new()?.block_on(self._get_credentials(env));
     }
 
+    /// Gets the notes service, it is used to access notes's endpoints.
+    /// 
+    /// <div class="warning">
+    ///     This method does not need to be called with parenthesis in javascript as it is binded as a getter.
+    /// </div>
+    /// 
+    /// # Examples
+    /// ```
+    /// use lrapiut::LRUser;
+    ///
+    /// let lrUser = LRUser::new("username".to_string(), "password".to_string());
+    /// let noteService = lrUser.notes();
+    /// ```
     #[napi(getter)]
     #[cfg(feature = "notes")]
     pub fn notes(&self) -> Arc<NotesService> {
