@@ -1,6 +1,6 @@
 [package]
 name = "lrapiut"
-version = "1.0.6"
+version = "1.0.7"
 edition = "2021"
 authors = ["Jonas CHARRIER (EarthKiii) <jonas.charrier1@gmail.com>"]
 repository = "https://github.com/EarthKiii/lrapiut/"
