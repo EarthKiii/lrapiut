@@ -45,3 +45,6 @@ panic = "abort"
 
 [dev-dependencies]
 lrapiut = { path = ".", features = ["notes"] }
+
+[package.metadata.docs.rs]
+rustc-args = ["--all-features"]

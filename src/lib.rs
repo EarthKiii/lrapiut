@@ -5,6 +5,8 @@
 //!     i.e. `get_credentials` becomes `getCredentials`.
 //! </div>
 
+#![cfg_attr(docsrs, feature(doc_auto_cfg))]
+
 #[cfg(feature = "notes")]
 mod notes;
 
