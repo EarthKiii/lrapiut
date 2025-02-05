@@ -1,6 +1,6 @@
 [package]
 name = "lrapiut"
-version = "1.0.8"
+version = "1.0.9"
 edition = "2021"
 authors = ["Jonas CHARRIER (EarthKiii) <jonas.charrier1@gmail.com>"]
 repository = "https://github.com/EarthKiii/lrapiut/"
@@ -24,20 +24,20 @@ notes = []
 gpu = []
 
 [target.'cfg(target_os = "linux")'.dependencies]
-openssl = { version = "0.10", features = ["vendored"] }
+openssl = { version = "0.10.70", features = ["vendored"] }
 
 [dependencies]
-reqwest = { version = "0.11.16", features = ["cookies", "json"] }
-reqwest_cookie_store = "0.6.0"
-serde_json = "1.0"
-tl = "0.7.7"
-async-trait = "0.1.73"
-napi = { version = "2.12.2", default-features = false, features = ["napi4", "serde-json", "tokio_rt"] }
-tokio = { version = "1.32.0", features = ["full"] }
-napi-derive = "2.12.2"
+reqwest = { version = "0.12.12", features = ["cookies", "json"] }
+reqwest_cookie_store = "0.8.0"
+serde_json = "1.0.138"
+tl = "0.7.8"
+async-trait = "0.1.86"
+napi = { version = "2.16.15", default-features = false, features = ["napi4", "serde-json", "tokio_rt"] }
+tokio = { version = "1.43.0", features = ["full"] }
+napi-derive = "2.16.13"
 
 [build-dependencies]
-napi-build = "2.0.1"
+napi-build = "2.1.4"
 
 [profile.release]
 lto = true

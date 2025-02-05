@@ -233,7 +233,7 @@ impl NotesService {
             panic!("Semestre introuvable");
         }
 
-        let json_response: Value = self.try_get(format!("{}{}","https://notes.iut-larochelle.fr/services/data.php?q=relevéEtudiant&semestre=",&formsemester_id.unwrap()).as_str()).await?;
+        let json_response: Value = self.try_get(format!("https://notes.iut-larochelle.fr/services/data.php?q=relevéEtudiant&semestre={}",&formsemester_id.unwrap()).as_str()).await?;
         Ok(json_response)
     }
 
@@ -263,6 +263,13 @@ impl NotesService {
     #[napi]
     pub async fn donnees_authentification(&self) -> Result<Value> {
         let json_response: Value = self.try_get("https://notes.iut-larochelle.fr/services/data.php?q=donnéesAuthentification").await?;
+        Ok(json_response)
+    }
+
+    /// Returns the `listeNotes` endpoint.
+    #[napi]
+    pub async fn liste_notes(&self, eval: i64) -> Result<Value> {
+        let json_response: Value = self.try_get(format!("https://notes.iut-larochelle.fr/services/data.php?q=listeNotes&eval={}", eval).as_str()).await?;
         Ok(json_response)
     }
 }
