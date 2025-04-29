@@ -5,53 +5,12 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@earthkiii/lrapiut-darwin-x64@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@earthkiii/lrapiut-darwin-x64@npm:1.1.2"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@earthkiii/lrapiut-linux-arm64-gnu@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@earthkiii/lrapiut-linux-arm64-gnu@npm:1.1.2"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@earthkiii/lrapiut-linux-x64-gnu@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@earthkiii/lrapiut-linux-x64-gnu@npm:1.1.2"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@earthkiii/lrapiut-win32-x64-msvc@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@earthkiii/lrapiut-win32-x64-msvc@npm:1.1.2"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@earthkiii/lrapiut@workspace:.":
   version: 0.0.0-use.local
   resolution: "@earthkiii/lrapiut@workspace:."
   dependencies:
-    "@earthkiii/lrapiut-darwin-x64": "npm:1.1.2"
-    "@earthkiii/lrapiut-linux-arm64-gnu": "npm:1.1.2"
-    "@earthkiii/lrapiut-linux-x64-gnu": "npm:1.1.2"
-    "@earthkiii/lrapiut-win32-x64-msvc": "npm:1.1.2"
     "@napi-rs/cli": "npm:^2.18.4"
     ava: "npm:^6.2.0"
-  dependenciesMeta:
-    "@earthkiii/lrapiut-darwin-x64":
-      optional: true
-    "@earthkiii/lrapiut-linux-arm64-gnu":
-      optional: true
-    "@earthkiii/lrapiut-linux-x64-gnu":
-      optional: true
-    "@earthkiii/lrapiut-win32-x64-msvc":
-      optional: true
   languageName: unknown
   linkType: soft
 
