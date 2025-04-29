@@ -35,11 +35,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/EarthKiii/lrapiut.git",
-  "optionalDependencies": {
-    "@earthkiii/lrapiut-darwin-x64": "1.1.2",
-    "@earthkiii/lrapiut-linux-arm64-gnu": "1.1.2",
-    "@earthkiii/lrapiut-linux-x64-gnu": "1.1.2",
-    "@earthkiii/lrapiut-win32-x64-msvc": "1.1.2"
-  }
+  "repository": "https://github.com/EarthKiii/lrapiut.git"
 }
