@@ -10,7 +10,7 @@ use crate::CoreFunctions;
 use async_trait::async_trait;
 use crate::napi_error;
 
-const LOGIN_URL: &str = "https://authentification.univ-lr.fr/cas/login?service=https://notes.iut-larochelle.fr/services/doAuth.php?href=https://notes.iut-larochelle.fr/";
+const LOGIN_URL: &str = "https://authentification.univ-lr.fr/cas/login?service=https://iut-notes.calypso.univ-lr.fr/services/doAuth.php?href=https://iut-notes.calypso.univ-lr.fr/";
 
 #[napi]
 #[derive(Clone)]
@@ -152,7 +152,7 @@ impl CoreFunctions for NotesService {
     }
 }
 
-/// NotesService, it exposes all useful and working endpoints of `notes.iut-larochelle.fr`.
+/// NotesService, it exposes all useful and working endpoints of `iut-notes.calypso.univ-lr.fr`.
 /// 
 /// # Examples
 /// ```
@@ -197,14 +197,14 @@ impl NotesService {
     /// Returns the `semestreEtudiant` endpoint.
     #[napi]
     pub async fn semestre_etudiant(&self) -> Result<Value> {
-        let json_response: Value = self.try_get("https://notes.iut-larochelle.fr/services/data.php?q=semestresEtudiant").await?;
+        let json_response: Value = self.try_get("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=semestresEtudiant").await?;
         Ok(json_response)
     }
 
     /// Returns the `dataPremièreConnexion` endpoint.
     #[napi]
     pub async fn data_premiere_connexion(&self) -> Result<Value> {
-        let json_response: Value = self.try_get("https://notes.iut-larochelle.fr/services/data.php?q=dataPremièreConnexion").await?;
+        let json_response: Value = self.try_get("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=dataPremi%C3%A8reConnexion").await?;
         Ok(json_response)
     }
     
@@ -233,21 +233,21 @@ impl NotesService {
             panic!("Semestre introuvable");
         }
 
-        let json_response: Value = self.try_get(format!("https://notes.iut-larochelle.fr/services/data.php?q=relevéEtudiant&semestre={}",&formsemester_id.unwrap()).as_str()).await?;
+        let json_response: Value = self.try_get(format!("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=relev%C3%A9Etudiant&semestre={}",&formsemester_id.unwrap()).as_str()).await?;
         Ok(json_response)
     }
 
     /// Returns the `deleteStudentPic` endpoint.
     #[napi]
     pub async fn delete_student_pic(&self) -> Result<Value> {
-        let json_response: Value = self.try_get("https://notes.iut-larochelle.fr/services/data.php?q=deleteStudentPic").await?;
+        let json_response: Value = self.try_get("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=deleteStudentPic").await?;
         Ok(json_response)
     }
 
     /// Returns the `getStudentPic` endpoint.
     #[napi]
     pub async fn get_student_pic(&self) -> Result<Value> {
-        let json_response: Value = self.try_get("https://notes.iut-larochelle.fr/services/data.php?q=getStudentPic").await?;
+        let json_response: Value = self.try_get("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=getStudentPic").await?;
         Ok(json_response)
     }
 
@@ -262,14 +262,14 @@ impl NotesService {
     /// Returns the `donnéesAuthentification` endpoint.
     #[napi]
     pub async fn donnees_authentification(&self) -> Result<Value> {
-        let json_response: Value = self.try_get("https://notes.iut-larochelle.fr/services/data.php?q=donnéesAuthentification").await?;
+        let json_response: Value = self.try_get("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=donnéesAuthentification").await?;
         Ok(json_response)
     }
 
     /// Returns the `listeNotes` endpoint.
     #[napi]
     pub async fn liste_notes(&self, eval: i64) -> Result<Value> {
-        let json_response: Value = self.try_get(format!("https://notes.iut-larochelle.fr/services/data.php?q=listeNotes&eval={}", eval).as_str()).await?;
+        let json_response: Value = self.try_get(format!("https://iut-notes.calypso.univ-lr.fr/services/data.php?q=listeNotes&eval={}", eval).as_str()).await?;
         Ok(json_response)
     }
 }
